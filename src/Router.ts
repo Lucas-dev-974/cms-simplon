@@ -9,13 +9,12 @@ export class Router{
 
     constructor(routes: Routes[]){
         this.routes = routes
-
         console.log(this.routes);
         
     }
 
-    add_Route(routes: Routes[]){
-       this.routes.push()
+    add_Route(routes: Routes){
+       this.routes.push(routes)
     }
 
     filter_name(obj: any, name:string){

@@ -1,15 +1,16 @@
 import { createServer, IncomingMessage, ServerResponse } from 'http';
-import { Router } from "./Router"
+import { Router } from "./Router";
 
 const ejs = require('ejs');
 const fs = require('fs')
-
 
 const port = 3000;
 
 const server = createServer((request: IncomingMessage, response: ServerResponse) => {
     const router = new Router([{ path: '/', file_path: './home.html',name: 'home'}])
-    
+
+    router.add_Route([{ path: '/', file_path: './home.html',name: 'home'}])
+
     switch (request.url) {
         case '/': {
             response.writeHead(200, {"Content-Type": "text/html"});
