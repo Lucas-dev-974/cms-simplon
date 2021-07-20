@@ -10,6 +10,4 @@ export class Viewer{
         let render      = ejs.render(htmlContent, {filename: view, data:'test'})
         res.end(render)
     }
-
-    
 }

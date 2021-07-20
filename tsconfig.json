@@ -17,7 +17,7 @@
     ],
   },
   "include": [
-    "src/**/*"
+    "src/**/*", "src/views/**/*"
   ],
   "exclude": [
     "src/**/*.spec.ts"
