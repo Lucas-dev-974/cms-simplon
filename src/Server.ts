@@ -40,7 +40,7 @@ export class Server{
             let rt:any = route.pop()
             rt.callback(req, res)
         }else{
-            return  Router.getRoutes().find((route:any) => route.url == "404")?.callback(req, res)
+            return  Router.getRoutes().find((route:any) => route.url == "/404")?.callback(req, res)
         }
     }
 }
