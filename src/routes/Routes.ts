@@ -1,4 +1,3 @@
-import { Route } from './Route';
 import { Router } from './Router'
 import { Controller } from '../controller/Controller';
 
