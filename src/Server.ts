@@ -1,6 +1,9 @@
 import * as http from "http";
 import { Router } from "./routes/Router";
 
+import { Request } from "./Server/Request";
+import { Response } from "./Server/Response";
+
 export class Server{
     static instance:Server;
     ServerAddress:any = process.env.SADDRESSE ||'localhost';
@@ -18,7 +21,11 @@ export class Server{
 
     private InitServ(){
         let server = http.createServer((request: http.IncomingMessage, response: http.ServerResponse) => {
-            this.checkRoute(request, response)
+            let req = new Request(request)
+            let res = new Response(response)
+
+            let data = this.checkRoute(req)
+            res.emit(data)
         })
 
         server.listen(this.ServerPort, this.ServerAddress, ()=>{
@@ -30,17 +37,14 @@ export class Server{
         this.GetInstance().InitServ()
     }
 
-    checkRoute(req:any, res:any){
-        let route = Router.getRoutes().filter(route => 
-            route.url === req.url && 
-            route.method == req.method
-        )
+    checkRoute(req:Request){
+        let route = Router.getRoutes().filter(route => route.url === req.url && route.method == req.method)
 
         if(route && route.length > 0){
             let rt:any = route.pop()
-            rt.callback(req, res)
+            return rt.callback()
         }else{
-            return  Router.getRoutes().find((route:any) => route.url == "/404")?.callback(req, res)
+            return  Router.getRoutes().find((route:any) => route.url == "/404")?.callback(req)
         }
     }
 }
