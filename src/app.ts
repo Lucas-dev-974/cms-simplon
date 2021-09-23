@@ -1,7 +1,8 @@
 import { Routes } from "./routes/Routes"
 import {Server} from "./Server"
-import { ORM } from "./ORM/orm"
+import Database  from "./database/db_configuration"
 
-let orm = new ORM()
+let database = new Database()
+
 Routes.build()
 Server.StartServer()

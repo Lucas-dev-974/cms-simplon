@@ -3,7 +3,6 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 export class Viewer{
-    
     constructor(private view_path:string, private data:any){}
 
     public getView(){

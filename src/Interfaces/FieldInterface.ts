@@ -1,0 +1,1 @@
+export interface FieldInterface{ fields: string, type: string }

@@ -4,7 +4,7 @@ export class Controller {
     private constructor() { }
 
     public static showMainPage = ()=>{
-        return Viewer.make('home.ejs', 'test')
+        return Viewer.make('home.ejs', 'Lucas')
     }
 
     public static home = ()=>{
